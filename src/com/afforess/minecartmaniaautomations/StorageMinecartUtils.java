@@ -90,11 +90,9 @@ public class StorageMinecartUtils {
 		if((minecart.getDataValue("AutoCactus") == null) && (minecart.getDataValue("AutoReCactus") == null)) {
 			return;
 		}
-
 		if (MinecartManiaWorld.getIntValue(MinecartManiaWorld.getConfigurationValue("Nearby Collection Range")) < 1) {
 			return;
 		}
-
 		Location loc = minecart.minecart.getLocation().clone();
 		int range = minecart.getEntityDetectionRange();
 		for (int dx = -(range); dx <= range; dx++){
