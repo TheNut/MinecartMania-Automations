@@ -138,10 +138,10 @@ public class StorageMinecartUtils {
 								// Need to check for blocks to the sides of the cactus position 
 								// as this would normally block planting.
 
-								int sidemx = MinecartManiaWorld.getBlockIdAt(minecart.minecart.getWorld(), x-1, y, z);
-								int sidepx = MinecartManiaWorld.getBlockIdAt(minecart.minecart.getWorld(), x+1, y, z);
-								int sidemz = MinecartManiaWorld.getBlockIdAt(minecart.minecart.getWorld(), x, y, z-1);
-								int sidepz = MinecartManiaWorld.getBlockIdAt(minecart.minecart.getWorld(), x, y, z+1);
+								int sidemx = MinecartManiaWorld.getBlockIdAt(minecart.minecart.getWorld(), x-1, y+1, z);
+								int sidepx = MinecartManiaWorld.getBlockIdAt(minecart.minecart.getWorld(), x+1, y+1, z);
+								int sidemz = MinecartManiaWorld.getBlockIdAt(minecart.minecart.getWorld(), x, y+1, z-1);
+								int sidepz = MinecartManiaWorld.getBlockIdAt(minecart.minecart.getWorld(), x, y+1, z+1);
 
 								boolean blockcactus = false;
 
