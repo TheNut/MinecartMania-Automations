@@ -17,7 +17,7 @@ public class StorageMinecartSugar {
 			return;
 		}
 
-		if (MinecartManiaWorld.getIntValue(MinecartManiaWorld.getConfigurationValue("Nearby Collection Range")) < 1) {
+		if (minecart.getEntityDetectionRange() < 1) {
 			return;
 		}
 

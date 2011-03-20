@@ -4,8 +4,8 @@ import java.util.Random;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.TreeType;
 import org.bukkit.World;
+
 import com.afforess.minecartmaniacore.MinecartManiaInventory;
 import com.afforess.minecartmaniacore.MinecartManiaStorageCart;
 import com.afforess.minecartmaniacore.MinecartManiaWorld;
@@ -16,7 +16,7 @@ public class StorageMinecartUtils {
 		if (minecart.getDataValue("AutoHarvest") == null && minecart.getDataValue("AutoTill") == null && minecart.getDataValue("AutoSeed") == null) {
 			return;
 		}
-		if (MinecartManiaWorld.getIntValue(MinecartManiaWorld.getConfigurationValue("Nearby Collection Range")) < 1) {
+		if (minecart.getEntityDetectionRange() < 1) {
 			return;
 		}
 		Location loc = minecart.minecart.getLocation().clone();
@@ -90,7 +90,7 @@ public class StorageMinecartUtils {
 		if((minecart.getDataValue("AutoCactus") == null) && (minecart.getDataValue("AutoReCactus") == null)) {
 			return;
 		}
-		if (MinecartManiaWorld.getIntValue(MinecartManiaWorld.getConfigurationValue("Nearby Collection Range")) < 1) {
+		if (minecart.getEntityDetectionRange() < 1) {
 			return;
 		}
 		Location loc = minecart.minecart.getLocation().clone();
@@ -167,7 +167,7 @@ public class StorageMinecartUtils {
 		if (minecart.getDataValue("AutoTimber") == null) {
 			return;
 		}
-		if (MinecartManiaWorld.getIntValue(MinecartManiaWorld.getConfigurationValue("Nearby Collection Range")) < 1) {
+		if (minecart.getEntityDetectionRange() < 1) {
 			return;
 		}
 		Location loc = minecart.minecart.getLocation().clone();
@@ -203,7 +203,6 @@ public class StorageMinecartUtils {
 				}
 			}
 		}
-
 	}
 
 	public static void doAutoFertilize(MinecartManiaStorageCart minecart) {
@@ -213,7 +212,7 @@ public class StorageMinecartUtils {
 		 	return;
 		}
 
-		if (MinecartManiaWorld.getIntValue(MinecartManiaWorld.getConfigurationValue("Nearby Collection Range")) < 1) {
+		if (minecart.getEntityDetectionRange() < 1) {
 			return;
 		}
 
