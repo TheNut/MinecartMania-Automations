@@ -6,6 +6,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 
+import com.afforess.minecartmaniacore.Item;
 import com.afforess.minecartmaniacore.MinecartManiaInventory;
 import com.afforess.minecartmaniacore.MinecartManiaStorageCart;
 import com.afforess.minecartmaniacore.MinecartManiaWorld;
@@ -188,7 +189,7 @@ public class StorageMinecartUtils {
 						}
 						int baseId = MinecartManiaWorld.getBlockIdAt(w, x, y - down, z);
 						//base of tree
-						if (baseId == Material.DIRT.getId() || baseId == Material.GRASS.getId()) {
+						if (baseId == Material.DIRT.getId() || baseId == Material.GRASS.getId()|| baseId == Item.LEAVES.getId()) {
 							removeLogs(x, y - down + 1, z, w, minecart);
 							//Attempt to replant the tree
 							if (minecart.getDataValue("AutoForest") != null) {
