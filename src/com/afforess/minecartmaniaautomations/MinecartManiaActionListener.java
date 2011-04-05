@@ -5,58 +5,62 @@ import com.afforess.minecartmaniacore.MinecartManiaStorageCart;
 import com.afforess.minecartmaniacore.MinecartManiaWorld;
 import com.afforess.minecartmaniacore.event.MinecartActionEvent;
 import com.afforess.minecartmaniacore.event.MinecartManiaListener;
+import com.afforess.minecartmaniacore.event.MinecartMotionStopEvent;
 
 public class MinecartManiaActionListener extends MinecartManiaListener{
 	
 	public void onMinecartActionEvent(MinecartActionEvent event) {
 		if (!event.isActionTaken()) {
-			final MinecartManiaMinecart minecart = event.getMinecart();
+			MinecartManiaMinecart minecart = event.getMinecart();
 			if (minecart.isStorageMinecart()) {
 				//Efficiency. Don't farm overlapping tiles repeatedly, waste of time
-				int interval = MinecartManiaWorld.getIntValue(minecart.getDataValue("Farm Interval")) * 2;
+				int interval = MinecartManiaWorld.getIntValue(minecart.getDataValue("Farm Interval"));
 				if (interval > 0) {
 					minecart.setDataValue("Farm Interval", interval - 1);
 				}
 				else {
-					minecart.setDataValue("Farm Interval", minecart.getRange());
-				
-					//Create a separate thread for each instead of running them all on 1 parallel thread
-					Runnable run = new Runnable() {
-						public void run() {
-							StorageMinecartUtils.doAutoFarm((MinecartManiaStorageCart)minecart);
-						}
-					};
-					MinecartManiaCore.server.getScheduler().scheduleAsyncDelayedTask(MinecartManiaCore.instance, run);
-					
-					run = new Runnable() {
-						public void run() {
-							StorageMinecartUtils.doAutoTimber((MinecartManiaStorageCart)minecart);
-						}
-					};
-					MinecartManiaCore.server.getScheduler().scheduleAsyncDelayedTask(MinecartManiaCore.instance, run);
-					
-					run = new Runnable() {
-						public void run() {
-							StorageMinecartUtils.doAutoCactusFarm((MinecartManiaStorageCart)minecart);
-						}
-					};
-					MinecartManiaCore.server.getScheduler().scheduleAsyncDelayedTask(MinecartManiaCore.instance, run);
-					
-					run = new Runnable() {
-						public void run() {
-							StorageMinecartSugar.doAutoSugarFarm((MinecartManiaStorageCart)minecart);
-						}
-					};
-					MinecartManiaCore.server.getScheduler().scheduleAsyncDelayedTask(MinecartManiaCore.instance, run);
-					
-					//run = new Runnable() {
-					//	public void run() {
-					//		StorageMinecartUtils.doAutoFertilize((MinecartManiaStorageCart)minecart);
-					//	}
-					//};
-					//MinecartManiaCore.server.getScheduler().scheduleAsyncDelayedTask(MinecartManiaCore.instance, run);
+					minecart.setDataValue("Farm Interval", minecart.getRange() * 2);
+					updateFarms((MinecartManiaStorageCart)minecart);
 				}
 			}
 		}
+	}
+	
+	public void onMinecartStopEvent(MinecartMotionStopEvent event) {
+		MinecartManiaMinecart minecart = event.getMinecart();
+		if (minecart.isStorageMinecart()) {
+			minecart.setDataValue("Farm Interval", minecart.getRange() * 2);
+			updateFarms((MinecartManiaStorageCart)minecart);
+		}
+	}
+	
+	private void updateFarms(final MinecartManiaStorageCart minecart) {
+		Runnable run = new Runnable() {
+			public void run() {
+				StorageMinecartUtils.doAutoFarm(minecart);
+			}
+		};
+		MinecartManiaCore.server.getScheduler().scheduleAsyncDelayedTask(MinecartManiaCore.instance, run);
+		
+		run = new Runnable() {
+			public void run() {
+				StorageMinecartUtils.doAutoTimber(minecart);
+			}
+		};
+		MinecartManiaCore.server.getScheduler().scheduleAsyncDelayedTask(MinecartManiaCore.instance, run);
+		
+		run = new Runnable() {
+			public void run() {
+				StorageMinecartUtils.doAutoCactusFarm(minecart);
+			}
+		};
+		MinecartManiaCore.server.getScheduler().scheduleAsyncDelayedTask(MinecartManiaCore.instance, run);
+		
+		run = new Runnable() {
+			public void run() {
+				StorageMinecartSugar.doAutoSugarFarm(minecart);
+			}
+		};
+		MinecartManiaCore.server.getScheduler().scheduleAsyncDelayedTask(MinecartManiaCore.instance, run);
 	}
 }
