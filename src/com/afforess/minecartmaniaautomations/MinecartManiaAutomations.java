@@ -1,6 +1,4 @@
 package com.afforess.minecartmaniaautomations;
-import java.util.logging.Logger;
-
 import org.bukkit.Server;
 import org.bukkit.event.Event;
 import org.bukkit.event.Event.Priority;
