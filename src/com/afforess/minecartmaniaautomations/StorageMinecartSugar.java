@@ -17,12 +17,12 @@ public class StorageMinecartSugar {
 			return;
 		}
 
-		if (minecart.getEntityDetectionRange() < 1) {
+		if (minecart.getRange() < 1) {
 			return;
 		}
 
 		Location loc = minecart.minecart.getLocation().clone();
-		int range = minecart.getEntityDetectionRange();
+		int range = minecart.getRange();
 		for (int dx = -(range); dx <= range; dx++){
 			for (int dy = -(range); dy <= range; dy++){
 				for (int dz = -(range); dz <= range; dz++){

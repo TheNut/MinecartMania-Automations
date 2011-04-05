@@ -17,11 +17,11 @@ public class StorageMinecartUtils {
 		if (minecart.getDataValue("AutoHarvest") == null && minecart.getDataValue("AutoTill") == null && minecart.getDataValue("AutoSeed") == null) {
 			return;
 		}
-		if (minecart.getEntityDetectionRange() < 1) {
+		if (minecart.getRange() < 1) {
 			return;
 		}
 		Location loc = minecart.minecart.getLocation().clone();
-		int range = minecart.getEntityDetectionRange();
+		int range = minecart.getRange();
 		for (int dx = -(range); dx <= range; dx++){
 			for (int dy = -(range); dy <= range; dy++){
 				for (int dz = -(range); dz <= range; dz++){
@@ -91,11 +91,11 @@ public class StorageMinecartUtils {
 		if((minecart.getDataValue("AutoCactus") == null) && (minecart.getDataValue("AutoReCactus") == null)) {
 			return;
 		}
-		if (minecart.getEntityDetectionRange() < 1) {
+		if (minecart.getRange() < 1) {
 			return;
 		}
 		Location loc = minecart.minecart.getLocation().clone();
-		int range = minecart.getEntityDetectionRange();
+		int range = minecart.getRange();
 		for (int dx = -(range); dx <= range; dx++){
 			for (int dy = -(range); dy <= range; dy++){
 				for (int dz = -(range); dz <= range; dz++){
@@ -168,11 +168,11 @@ public class StorageMinecartUtils {
 		if (minecart.getDataValue("AutoTimber") == null) {
 			return;
 		}
-		if (minecart.getEntityDetectionRange() < 1) {
+		if (minecart.getRange() < 1) {
 			return;
 		}
 		Location loc = minecart.minecart.getLocation().clone();
-		int range = minecart.getEntityDetectionRange();
+		int range = minecart.getRange();
 		for (int dx = -(range); dx <= range; dx++){
 			for (int dy = -(range); dy <= range; dy++){
 				for (int dz = -(range); dz <= range; dz++){

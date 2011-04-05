@@ -13,12 +13,12 @@ public class MinecartManiaActionListener extends MinecartManiaListener{
 			final MinecartManiaMinecart minecart = event.getMinecart();
 			if (minecart.isStorageMinecart()) {
 				//Efficiency. Don't farm overlapping tiles repeatedly, waste of time
-				int interval = MinecartManiaWorld.getIntValue(minecart.getDataValue("Farm Interval")) * 4;
+				int interval = MinecartManiaWorld.getIntValue(minecart.getDataValue("Farm Interval")) * 2;
 				if (interval > 0) {
 					minecart.setDataValue("Farm Interval", interval - 1);
 				}
 				else {
-					minecart.setDataValue("Farm Interval", minecart.getEntityDetectionRange());
+					minecart.setDataValue("Farm Interval", minecart.getRange());
 				
 					//Create a separate thread for each instead of running them all on 1 parallel thread
 					Runnable run = new Runnable() {
