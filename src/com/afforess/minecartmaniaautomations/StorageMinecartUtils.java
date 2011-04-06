@@ -190,9 +190,8 @@ public class StorageMinecartUtils {
 						int baseId = MinecartManiaWorld.getBlockIdAt(w, x, y - down, z);
 						//base of tree
 						if (baseId == Material.DIRT.getId() || baseId == Material.GRASS.getId()|| baseId == Item.LEAVES.getId()) {
-							removeLogs(x, y - down + 1, z, w, minecart);
 							//Attempt to replant the tree
-							if (minecart.getDataValue("AutoForest") != null) {
+							if (removeLogs(x, y - down + 1, z, w, minecart) && minecart.getDataValue("AutoForest") != null) {
 								if (minecart.contains(Material.SAPLING)) {
 									minecart.removeItem(Material.SAPLING.getId());
 									MinecartManiaWorld.setBlockAt(w, Material.SAPLING.getId(), x, y - down + 1, z);
