@@ -1,5 +1,5 @@
 name: MinecartManiaAutomations
 main: com.afforess.minecartmaniaautomations.MinecartManiaAutomations
-version: 1.09
+version: 1.10_beta1
 author: Afforess
 depend: [MinecartManiaCore]

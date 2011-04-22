@@ -289,7 +289,7 @@ public class StorageMinecartUtils {
 					int y = posy + dy;
 					int z = posz + dz;
 					int id = MinecartManiaWorld.getBlockIdAt(w, x, y, z);
-					if (id  == Material.LOG.getId() && inventory.addItem(id)) {
+					if (id  == Item.LOG.getId() && inventory.addItem(id, MinecartManiaWorld.getBlockData(w, x, y, z))) {
 						action = true;
 						MinecartManiaWorld.setBlockAt(w, 0, x, y, z);
 						removeLogs(x, y, z, w, inventory);
