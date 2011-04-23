@@ -22,8 +22,9 @@ public class StorageMinecartUtils {
 		}
 		Location loc = minecart.minecart.getLocation().clone();
 		int range = minecart.getRange();
+		int rangeY = minecart.getRangeY();
 		for (int dx = -(range); dx <= range; dx++){
-			for (int dy = -(range); dy <= range; dy++){
+			for (int dy = -(rangeY); dy <= rangeY; dy++){
 				for (int dz = -(range); dz <= range; dz++){
 					//Setup data
 					int x = loc.getBlockX() + dx;
@@ -96,8 +97,9 @@ public class StorageMinecartUtils {
 		}
 		Location loc = minecart.minecart.getLocation().clone();
 		int range = minecart.getRange();
+		int rangeY = minecart.getRangeY();
 		for (int dx = -(range); dx <= range; dx++){
-			for (int dy = -(range); dy <= range; dy++){
+			for (int dy = -(rangeY); dy <= rangeY; dy++){
 				for (int dz = -(range); dz <= range; dz++){
 					//Setup data
 					int x = loc.getBlockX() + dx;
@@ -173,8 +175,9 @@ public class StorageMinecartUtils {
 		}
 		Location loc = minecart.minecart.getLocation().clone();
 		int range = minecart.getRange();
+		int rangeY = minecart.getRangeY();
 		for (int dx = -(range); dx <= range; dx++){
-			for (int dy = -(range); dy <= range; dy++){
+			for (int dy = -(rangeY); dy <= rangeY; dy++){
 				for (int dz = -(range); dz <= range; dz++){
 					//Setup data
 					int x = loc.getBlockX() + dx;
@@ -289,7 +292,8 @@ public class StorageMinecartUtils {
 					int y = posy + dy;
 					int z = posz + dz;
 					int id = MinecartManiaWorld.getBlockIdAt(w, x, y, z);
-					if (id  == Item.LOG.getId() && inventory.addItem(id, MinecartManiaWorld.getBlockData(w, x, y, z))) {
+					int data = MinecartManiaWorld.getBlockData(w, x, y, z);
+					if (id  == Item.LOG.getId() && inventory.addItem(Item.getItem(id, data).toItemStack())) {
 						action = true;
 						MinecartManiaWorld.setBlockAt(w, 0, x, y, z);
 						removeLogs(x, y, z, w, inventory);

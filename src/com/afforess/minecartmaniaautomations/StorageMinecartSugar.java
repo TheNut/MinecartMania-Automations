@@ -23,8 +23,9 @@ public class StorageMinecartSugar {
 
 		Location loc = minecart.minecart.getLocation().clone();
 		int range = minecart.getRange();
+		int rangeY = minecart.getRangeY();
 		for (int dx = -(range); dx <= range; dx++){
-			for (int dy = -(range); dy <= range; dy++){
+			for (int dy = -(rangeY); dy <= rangeY; dy++){
 				for (int dz = -(range); dz <= range; dz++){
 					//Setup data
 					int x = loc.getBlockX() + dx;
