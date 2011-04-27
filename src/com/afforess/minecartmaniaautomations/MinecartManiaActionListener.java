@@ -17,17 +17,13 @@ public class MinecartManiaActionListener extends MinecartManiaListener{
 					minecart.setDataValue("Farm Interval", interval - 1);
 				}
 				else {
-					minecart.setDataValue("Farm Interval", minecart.getRange());
-					updateFarms((MinecartManiaStorageCart)minecart);
+					minecart.setDataValue("Farm Interval", minecart.getRange()/2);
+					StorageMinecartUtils.doAutoFarm((MinecartManiaStorageCart)minecart);
+					StorageMinecartUtils.doAutoTimber((MinecartManiaStorageCart)minecart);
+					StorageMinecartUtils.doAutoCactusFarm((MinecartManiaStorageCart)minecart);
+					StorageMinecartSugar.doAutoSugarFarm((MinecartManiaStorageCart)minecart);
 				}
 			}
 		}
-	}
-	
-	private void updateFarms(final MinecartManiaStorageCart minecart) {
-		StorageMinecartUtils.doAutoFarm(minecart);
-		StorageMinecartUtils.doAutoTimber(minecart);
-		StorageMinecartUtils.doAutoCactusFarm(minecart);
-		StorageMinecartSugar.doAutoSugarFarm(minecart);
 	}
 }
