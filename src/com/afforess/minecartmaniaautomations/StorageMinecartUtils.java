@@ -185,19 +185,23 @@ public class StorageMinecartUtils {
 					int z = loc.getBlockZ() + dz;
 					World w = minecart.minecart.getWorld();
 					int id = MinecartManiaWorld.getBlockIdAt(minecart.minecart.getWorld(), x, y, z);
-					if (id == Material.LOG.getId()) {
+					if (id == Item.LOG.getId()) {
 						int down = 1;
-						while (MinecartManiaWorld.getBlockIdAt(w, x, y - down, z) == Material.LOG.getId()) {
+						while (MinecartManiaWorld.getBlockIdAt(w, x, y - down, z) == Item.LOG.getId()) {
 							down++;
 						}
 						int baseId = MinecartManiaWorld.getBlockIdAt(w, x, y - down, z);
 						//base of tree
 						if (baseId == Material.DIRT.getId() || baseId == Material.GRASS.getId()|| baseId == Item.LEAVES.getId()) {
+							Item base = Item.getItem(w.getBlockAt(x, y - down + 1, z));
 							//Attempt to replant the tree
 							if (removeLogs(x, y - down + 1, z, w, minecart) && minecart.getDataValue("AutoForest") != null) {
-								if (minecart.contains(Material.SAPLING)) {
-									minecart.removeItem(Material.SAPLING.getId());
-									MinecartManiaWorld.setBlockAt(w, Material.SAPLING.getId(), x, y - down + 1, z);
+								Item sapling = Item.SAPLING;
+								if (base.getData() == 0x1) sapling = Item.SPRUCE_SAPLING;
+								if (base.getData() == 0x2) sapling = Item.BIRCH_SAPLING;
+								if (minecart.contains(sapling)) {
+									minecart.removeItem(sapling.getId(), sapling.getData());
+									w.getBlockAt(x, y - down + 1, z).setTypeIdAndData(sapling.getId(), (byte) sapling.getData(), true);
 								}
 							}
 						}
