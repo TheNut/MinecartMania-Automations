@@ -6,10 +6,10 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 
-import com.afforess.minecartmaniacore.Item;
-import com.afforess.minecartmaniacore.MinecartManiaInventory;
-import com.afforess.minecartmaniacore.MinecartManiaStorageCart;
-import com.afforess.minecartmaniacore.MinecartManiaWorld;
+import com.afforess.minecartmaniacore.world.Item;
+import com.afforess.minecartmaniacore.inventory.MinecartManiaInventory;
+import com.afforess.minecartmaniacore.minecart.MinecartManiaStorageCart;
+import com.afforess.minecartmaniacore.world.MinecartManiaWorld;
 
 public class StorageMinecartUtils {
 

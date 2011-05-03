@@ -8,8 +8,8 @@ package com.afforess.minecartmaniaautomations;
 import org.bukkit.Location;
 import org.bukkit.Material;
 
-import com.afforess.minecartmaniacore.MinecartManiaStorageCart;
-import com.afforess.minecartmaniacore.MinecartManiaWorld;
+import com.afforess.minecartmaniacore.minecart.MinecartManiaStorageCart;
+import com.afforess.minecartmaniacore.world.MinecartManiaWorld;
 
 public class StorageMinecartSugar {
 	public static void doAutoSugarFarm(MinecartManiaStorageCart minecart) {
