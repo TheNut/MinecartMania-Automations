@@ -1,7 +1,6 @@
 package com.afforess.minecartmaniaautomations;
 import com.afforess.minecartmaniacore.minecart.MinecartManiaMinecart;
 import com.afforess.minecartmaniacore.minecart.MinecartManiaStorageCart;
-import com.afforess.minecartmaniacore.world.MinecartManiaWorld;
 import com.afforess.minecartmaniacore.event.MinecartActionEvent;
 import com.afforess.minecartmaniacore.event.MinecartManiaListener;
 
@@ -12,7 +11,7 @@ public class MinecartManiaActionListener extends MinecartManiaListener{
 			MinecartManiaMinecart minecart = event.getMinecart();
 			if (minecart.isStorageMinecart()) {
 				//Efficiency. Don't farm overlapping tiles repeatedly, waste of time
-				int interval = MinecartManiaWorld.getIntValue(minecart.getDataValue("Farm Interval"));
+				int interval = minecart.getDataValue("Farm Interval") == null ? -1 : (Integer)minecart.getDataValue("Farm Interval");
 				if (interval > 0) {
 					minecart.setDataValue("Farm Interval", interval - 1);
 				}
